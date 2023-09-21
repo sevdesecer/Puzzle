@@ -1,7 +1,6 @@
 var rows = 5;
 var columns = 5;
 
-
 var currTile; //curved tile
 var otherTile; // other tile // we need two of them so that we can swap with two tiles.
 
@@ -17,12 +16,12 @@ window.onload=function(){
             let tile = document.createElement("img");
             tile.src = "./images/blank.jpg";
 //DRAG FUNCTIONALITY
-tile.addEventListener("dragstart", dragStart);
-tile.addEventListener("dragover", dragOver);
-tile.addEventListener("dragenter", dragEnter);
-tile.addEventListener("dragleave", dragLeave);
+tile.addEventListener("dragstart", dragStart); //click on image to drag
+tile.addEventListener("dragover", dragOver);   //drag an image
+tile.addEventListener("dragenter", dragEnter); //dragging an image into another one
+tile.addEventListener("dragleave", dragLeave); //dragging an image away from another one
 tile.addEventListener("drop", dragDrop);       //drop an image onto another one
-tile.addEventListener("dragend", dragEnd);
+tile.addEventListener("dragend", dragEnd);      //after you completed dragDrop
 
 document.getElementById("board").append(tile);
 }
@@ -33,7 +32,6 @@ let pieces = [];
 for (let i=1; i <= rows*columns; i++) {
 pieces.push(i.toString()); //put "1" to "25" into the array (puzzle images names)
 }
-
 pieces.reverse();
 for (let i =0; i < pieces.length; i++) {
 let j = Math.floor(Math.random() * pieces.length);
@@ -53,7 +51,7 @@ tile.addEventListener("dragstart", dragStart);
 tile.addEventListener("dragover", dragOver);
 tile.addEventListener("dragenter", dragEnter);
 tile.addEventListener("dragleave", dragLeave);
-tile.addEventListener("drop", dragDrop); //drop an image onto another one
+tile.addEventListener("drop", dragDrop);
 tile.addEventListener("dragend", dragEnd);
 
 document.getElementById("pieces").append(tile);
@@ -73,7 +71,9 @@ function dragEnter(e) {
 e.preventDefault();
 }
 
-function dragLeave() {}
+function dragLeave() {
+
+}
 
 function dragDrop() {
 otherTile = this; //this refers to image that is being dropped on
